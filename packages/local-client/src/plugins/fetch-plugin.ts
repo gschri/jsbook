@@ -50,11 +50,6 @@ export let fecthPlugin = (inputCode: string) => {
       })
 
       build.onLoad({ filter: /.*/ }, async (args: any) => {
-        let cachedResult = await localForage.getItem<esbuild.OnLoadResult>(args.path);
-        if (cachedResult) {
-          return cachedResult
-        }
-
         let { data, request } = await axios.get(args.path)
 
         let result: esbuild.OnLoadResult = {
