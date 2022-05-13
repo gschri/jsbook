@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import { fecthPlugin } from './plugins/fetch-plugin'
 import { unpkgPathPlugin } from './plugins/unpkg-path-plugin'
+import CodeEditor from './components/code-editor'
 
 let App = () => {
   var ref = useRef<any>()
@@ -61,6 +62,7 @@ let App = () => {
   `
   return (
     <div>
+      <CodeEditor />
       <textarea value={input} onChange={e => setInput(e.target.value)}></textarea>
       <div>
         <button onClick={onClick}>Submit</button>
