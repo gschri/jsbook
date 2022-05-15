@@ -10,19 +10,29 @@ let bundle = async (rawCode: string) => {
       wasmURL: 'https://unpkg.com/esbuild-wasm@0.8.27/esbuild.wasm'
     })
   }
+  try {
+    let result = await service.build({
+      entryPoints: ['index.js'],
+      bundle: true,
+      write: false,
+      plugins: [unpkgPathPlugin(), fecthPlugin(rawCode)],
+      define: {
+        'process.env.NODE_ENV': '"production"',
+        global: 'window',
+      }
+    })
 
-  let result = await service.build({
-    entryPoints: ['index.js'],
-    bundle: true,
-    write: false,
-    plugins: [unpkgPathPlugin(), fecthPlugin(rawCode)],
-    define: {
-      'process.env.NODE_ENV': '"production"',
-      global: 'window',
+    return {
+      code: result.outputFiles[0].text,
+      error: ''
     }
-  })
+  } catch (error) {
+    return {
+      code: '',
+      error: error.message
+    }
+  }
 
-  return result.outputFiles[0].text
 
 }
 
