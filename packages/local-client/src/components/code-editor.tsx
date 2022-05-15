@@ -1,5 +1,5 @@
 import './code-editor.css';
-import {FC, useRef } from 'react';
+import { useRef } from 'react';
 import MonacoEditor, { EditorDidMount } from '@monaco-editor/react';
 import prettier from 'prettier';
 import parser from 'prettier/parser-babel';
@@ -9,7 +9,7 @@ interface CodeEditorProps {
   onChange(value: string): void;
 }
 
-const CodeEditor: FC<CodeEditorProps> = ({ onChange, initialValue }) => {
+const CodeEditor: React.FC<CodeEditorProps> = ({ onChange, initialValue }) => {
   const editorRef = useRef<any>();
 
   const onEditorDidMount: EditorDidMount = (getValue, monacoEditor) => {
@@ -53,7 +53,7 @@ const CodeEditor: FC<CodeEditorProps> = ({ onChange, initialValue }) => {
         value={initialValue}
         theme="dark"
         language="javascript"
-        height="500px"
+        height="100%"
         options={{
           wordWrap: 'on',
           minimap: { enabled: false },

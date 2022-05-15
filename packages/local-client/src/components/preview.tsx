@@ -1,11 +1,14 @@
-import { useRef, useEffect, FC } from 'react'
+import './preview.css'
+import { useRef, useEffect } from 'react'
 interface PreviewProps {
   code: string;
 };
 
 let html = `
   <html>
-    <head></head>
+    <head>
+      <style>html {background-color: white;}</style>
+    </head>
     <body>
       <div id="root"></div>
       <script>
@@ -24,19 +27,29 @@ let html = `
 `
 
 
-let Preview: FC<PreviewProps> = ({ code }) => {
+let Preview: React.FC<PreviewProps> = ({ code }) => {
   var iframe = useRef<any>()
+
   useEffect(() => {
     iframe.current.srcdoc = html
-    iframe.current.contentWindow.postMessage(code, '*')
+    var timeout = setTimeout(() => {
+      iframe.current.contentWindow.postMessage(code, '*')
+    }, 50);
+
+    return () => {
+      clearTimeout(timeout)
+    }
   }, [code])
+
   return (
-    <iframe
-      title="preview"
-      ref={iframe}
-      sandbox="allow-scripts"
-      srcDoc={html}
-    />
+    <div className="preview-wrapper">
+      <iframe
+        title="preview"
+        ref={iframe}
+        sandbox="allow-scripts"
+        srcDoc={html}
+      />
+    </div>
   )
 
 };
