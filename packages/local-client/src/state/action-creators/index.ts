@@ -2,8 +2,11 @@ import { createAction } from '@reduxjs/toolkit';
 import { ActionType } from '../action-types'
 import {
   Direction,
+  Action
 } from '../actions'
 import { CellTypes } from '../cell';
+import bundle from '../../bundler'
+import { Dispatch } from 'react';
 
 export let updateCellAction = createAction<{ id: string, content: string }>(ActionType.UPDATE_CELL)
 export let updateCell = (id: string, content: string) => updateCellAction({ id, content })
@@ -17,3 +20,24 @@ export let moveCell = (id: string, direction: Direction) => moveCellAction({ id,
 export let insertCellAfterAction = createAction<{ id: string | null, type: CellTypes }>(ActionType.INSERT_CELL_AFTER)
 export let insertCellAfter = (id: string | null, type: CellTypes) => insertCellAfterAction({ id, type })
 
+export let createBundle = (cellId: string, input: string) => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({
+      type: ActionType.BUNDLE_START,
+      payload: {
+        cellId
+      }
+    })
+
+    let result = await bundle(input)
+
+    dispatch({
+      type: ActionType.BUNDLE_COMPLETE,
+      payload: {
+        cellId,
+        bundle: result
+      }
+    })
+
+  }
+}

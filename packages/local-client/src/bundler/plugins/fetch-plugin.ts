@@ -25,7 +25,6 @@ export let fecthPlugin = (inputCode: string) => {
       build.onLoad({ filter: /\.css$/ }, async (args: any) => {
         let { data, request } = await axios.get(args.path)
 
-
         let escaped = data
           .replace(/\n/g, '') // collapse CSS into a single line
           .replace(/"/g, '\\"') // escape double-quotes
@@ -62,8 +61,6 @@ export let fecthPlugin = (inputCode: string) => {
 
         return result
       });
-
-
     }
   }
 }
