@@ -1,48 +1,19 @@
+import { createAction } from '@reduxjs/toolkit';
 import { ActionType } from '../action-types'
 import {
-  Action,
   Direction,
-  UpdateCellAction,
-  DeleteCellAction,
-  InsertCellBeforeAction,
-  MoveCellAction
 } from '../actions'
 import { CellTypes } from '../cell';
 
-export let updateCell = (id: string, content: string): UpdateCellAction => {
-  return {
-    type: ActionType.UPDATE_CELL,
-    payload: {
-      id,
-      content
-    }
-  }
-};
+export let updateCellAction = createAction<{ id: string, content: string }>(ActionType.UPDATE_CELL)
+export let updateCell = (id: string, content: string) => updateCellAction({ id, content })
 
-export let deleteCell = (id: string): DeleteCellAction => {
-  return {
-    type: ActionType.DELETE_CELL,
-    payload: id
-  }
-};
+export let deleteCellAction = createAction<string>(ActionType.DELETE_CELL)
+export let deleteCell = (id: string) => deleteCellAction(id)
 
-export let moveCell = (id: string, direction: Direction): MoveCellAction => {
-  return {
-    type: ActionType.MOVE_CELL,
-    payload: {
-      id,
-      direction
-    }
-  }
-};
+export let moveCellAction = createAction<{ id: string, direction: Direction }>(ActionType.MOVE_CELL)
+export let moveCell = (id: string, direction: Direction) => moveCellAction({ id, direction })
 
-export let insertCellBefore = (id: string, cellType: CellTypes): InsertCellBeforeAction => {
-  return {
-    type: ActionType.INSERT_CELL_BEFORE,
-    payload: {
-      id,
-      type: cellType
-    }
-  }
+export let insertCellAfterAction = createAction<{ id: string | null, type: CellTypes }>(ActionType.INSERT_CELL_AFTER)
+export let insertCellAfter = (id: string | null, type: CellTypes) => insertCellAfterAction({ id, type })
 
-};

@@ -1,3 +1,7 @@
+.wmde-markdown:nth-child(1) {
+  background-color: #1d2a38 
+}
+
 .w-md-editor .title {
   line-height: unset;
   font-size: unset;
