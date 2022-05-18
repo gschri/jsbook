@@ -4,7 +4,11 @@ import {
   updateCellAction,
   moveCellAction,
   insertCellAfterAction,
-  deleteCellAction
+  deleteCellAction,
+  fetchCellsCompleteAction,
+  fetchCellsErrorAction,
+  fetchCellsStartAction,
+  saveCellsErrorAction
 } from '../action-creators'
 
 interface CellsState {
@@ -60,6 +64,24 @@ let reducer = createReducer(initialState, (builder) => {
       } else {
         state.order.splice(foundIndex + 1, 0, cell.id)
       }
+    })
+    .addCase(fetchCellsStartAction, (state, action) => {
+      state.loading = true;
+      state.error = null;
+    })
+    .addCase(fetchCellsCompleteAction, (state, action) => {
+      state.order = action.payload.map(cell => cell.id)
+      state.data = action.payload.reduce((acc, cell) => {
+        acc[cell.id] = cell;
+        return acc
+      }, {} as CellsState['data'])
+    })
+    .addCase(fetchCellsErrorAction, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    })
+    .addCase(saveCellsErrorAction, (state, action) => {
+      state.error = action.payload
     })
 })
 

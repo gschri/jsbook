@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { insertCellAfter } from './action-creators';
 import reducers from './reducers'
+import { persistMiddleware } from './middlewares/persist-middleware'
+
+export type RootState = ReturnType<typeof reducers>;
 
 export let store = configureStore({
-  reducer: reducers
+  reducer: reducers,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(persistMiddleware)
 })
 
-export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch
 
-store.dispatch(insertCellAfter(null, 'code'))
-
-store.dispatch(insertCellAfter(null, 'text'))
