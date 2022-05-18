@@ -2,6 +2,8 @@ import path from 'path'
 import { Command } from 'commander'
 import { serve } from 'local-api'
 
+let isProduction = process.env.NODE_ENV === 'production'
+
 export let serveCommand = new Command()
   .command('serve [filename]')
   .description('Open a file for editing')
@@ -9,7 +11,7 @@ export let serveCommand = new Command()
   .action(async (filename = 'notebook.js', options: { port: string }) => {
     try {
       var dir = path.join(process.cwd(), path.dirname(filename))
-      await serve(parseInt(options.port), path.basename(filename), dir)
+      await serve(parseInt(options.port), path.basename(filename), dir, !isProduction)
       console.log(
         `Opened ${filename}. Navigate to http://localhost:${options.port} to edit the file.`
       )
