@@ -16,7 +16,7 @@ export let serve = (port: number, filename: string, dir: string, useProxy: boole
       logLevel: 'silent'
     }))
   } else {
-    let packagePath = require.resolve('local-client/build/index.html');
+    let packagePath = require.resolve('@jsxdox/local-client/build/index.html');
     app.use(express.static(path.dirname(packagePath)));
   }
 
