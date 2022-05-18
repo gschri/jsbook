@@ -3,9 +3,7 @@ import axios from 'axios'
 import { createAction } from '@reduxjs/toolkit';
 import { ActionType } from '../action-types'
 import { AppDispatch, RootState } from '../store'
-import {
-  Direction,
-} from '../actions'
+import { Direction } from '../actions'
 import { Cell, CellTypes } from '../cell';
 import bundle from '../../bundler'
 

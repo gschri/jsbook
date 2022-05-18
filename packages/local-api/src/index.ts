@@ -3,7 +3,6 @@ import { createProxyMiddleware } from 'http-proxy-middleware'
 import path from 'path'
 import { createCellsRouter } from './routes/cells'
 
-
 export let serve = (port: number, filename: string, dir: string, useProxy: boolean) => {
   var app = express()
 
