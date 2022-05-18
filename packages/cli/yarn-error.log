@@ -1,0 +1,51 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\gabri\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js
+
+PATH: 
+  C:\Users\gabri\AppData\Local\oh-my-posh;C:\Program Files\PowerShell\7;C:\Python310\Scripts\;C:\Python310\;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\bin;C:\Program Files\AdoptOpenJDK\jdk-11.0.11.9-hotspot\bin;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64_win\compiler;C:\Python39\Scripts\;C:\Python39\;C:\Program Files\Java\jdk-11.0.2\bin;C:\Python38\Scripts\;C:\Python38\;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\gabri\AppData\Local\LyX 2.3\Perl\bin;C:\Program Files\MATLAB\R2019b\runtime\win64;C:\Program Files\MATLAB\R2019b\bin;C:\Program Files\MATLAB\R2019b\polyspace\bin;C:\Program Files\Calibre2\;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\QuickTime\QTSystem\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\Neovim\/bin;C:\Program Files\usbipd-win\;C:\Program Files\Go\bin;C:\Program Files\PowerShell\7\;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Users\gabri\scoop\apps\gcc\current\bin;C:\Users\gabri\scoop\shims;C:\Users\gabri\AppData\Roaming\local\bin;C:\GTK\bin;C:\Users\gabri\.cargo\bin;C:\Users\gabri\AppData\Local\Microsoft\WindowsApps;C:\Users\gabri\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\gabri\AppData\Local\Programs\MiKTeX 2.9\miktex\bin\x64\;C:\flutter\bin;C:\Users\gabri\AppData\Local\GitHubDesktop\bin;C:\Program Files\Docker Toolbox;C:\Users\gabri\AppData\Roaming\npm;C:\src\flutter\bin;C:\tools\neovim\nvim-win64\bin;C:\Users\gabri\go\bin;C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin;C:\Users\gabri\scoop\shims
+
+Yarn version: 
+  1.22.18
+
+Node version: 
+  16.14.2
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/local-api: Not found
+      at Request.params.callback [as _callback] (C:\Users\gabri\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66138:18)
+      at Request.self.callback (C:\Users\gabri\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140883:22)
+      at Request.emit (node:events:526:28)
+      at Request.<anonymous> (C:\Users\gabri\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141855:10)
+      at Request.emit (node:events:526:28)
+      at IncomingMessage.<anonymous> (C:\Users\gabri\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141777:12)
+      at Object.onceWrapper (node:events:645:28)
+      at IncomingMessage.emit (node:events:538:35)
+      at endReadableNT (node:internal/streams/readable:1345:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+npm manifest: 
+  {
+    "name": "cli",
+    "version": "1.0.0",
+    "license": "MIT",
+    "scripts": {
+      "start": "tsc --watch --preserveWatchOutput"
+    },
+    "dependencies": {
+      "commander": "^9.2.0",
+      "local-api": "^1.0.0"
+    },
+    "devDependencies": {
+      "@types/node": "^17.0.34",
+      "typescript": "^4.6.4"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

@@ -1,2 +1,1 @@
-declare const _default: () => void;
-export default _default;
+export declare let serve: (port: number, filename: string, dir: string) => void;
